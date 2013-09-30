@@ -1,0 +1,235 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary{
+	display: block;
+}
+html{
+	margin: 0;
+	height: 100%;
+}
+body{
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	font: 14px/1.8 "Hiragino Maru Gothic Pro", "ヒラギノ丸ゴ Pro W4", Meiryo, "メイリオ", sans-serif;
+}
+body.can-touch{
+	overflow: visible;
+}
+#container{
+	position: absolute;
+}
+#map{
+	width: 100%;
+	height: 100%;
+}
+#map{
+	position: absolute;
+	cursor: hand;
+	cursor: grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+}
+@media screen\0 {
+	#map{
+		cursor: url(https://mail.google.com/mail/images/2/openhand.cur), move;
+	}
+}
+#container.grabbing #map{
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
+}
+@media screen\0 {
+	#container.grabbing #map{
+		cursor: url(https://mail.google.com/mail/images/2/closedhand.cur), move;
+	}
+}
+.map-piece{
+	width: 256px;
+	height: 256px;
+	position: absolute;
+}
+.map-piece.right-end{
+	width: 171px;
+}
+.map-piece.bottom-end{
+	height: 216px;
+}
+.map-piece img{
+	width: 256px;
+	height: 256px;
+	display: none;
+}
+.map-piece.right-end img{
+	width: 171px;
+}
+.map-piece.bottom-end img{
+	height: 216px;
+}
+.illust{
+	position: absolute;
+}
+.illust-group{
+	position: absolute;
+}
+.illust-group img{
+	display: block;
+	position: absolute;
+}
+.illust-group .bg{
+	width: 100%;
+	height: 100%;
+}
+.text{
+	position: absolute;
+}
+.text .by-language{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.shop{
+	position: absolute;
+}
+.shop img{
+	display: block;
+}
+.shop .bg{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.shop .name{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.by-language{
+	display: none;
+}
+.by-language.current{
+	display: block;
+}
+.balloon{
+	position: absolute;
+	width: 256px;
+	display: none;
+	z-index: 100;
+}
+.balloon.to-left{
+	right: -250px;
+}
+.balloon.to-right{
+	left: -232px;
+}
+.balloon.top{
+	bottom: 12px;
+}
+.balloon.bottom{
+	top: 12px;
+}
+.balloon img{
+	position: absolute;
+	width: 100%;
+	height: auto;
+}
+.balloon .bottom{
+	bottom: 0;
+}
+.balloon .body{
+	position: relative;
+	overflow: hidden;
+}
+.balloon.top .body{
+	margin: 32px 0 64px;
+}
+.balloon.bottom .body{
+	margin: 48px 0 48px;
+}
+.balloon .body h1{
+	position: relative;
+	font-size: 18px;
+	line-height: 1.1;
+	margin: 0 63px 0 17px;
+}
+.balloon .close-balloon{
+	width: 37px;
+	top: -16px;
+	right: 20px;
+	cursor: pointer;
+}
+.balloon .body article{
+	position: relative;
+	margin: 8px 39px 0 17px;
+}
+.balloon .body a{
+	position: relative;
+	margin: 8px 39px 0 17px;
+	font-family: inherit;
+	line-height: 1.2;
+	border: none;
+	background: #ddd;
+	padding: 4px;
+	display: block;
+	text-decoration: none;
+	font-size: 11px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.balloon .body a:link, .balloon .body a:visited{
+	color: inherit;
+}
+.balloon .body a:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.balloon .body a img{
+	width: 24px;
+	height: 24px;
+	position: relative;
+	margin-right: 6px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.balloon .body a span{
+	position: relative;
+}
+.balloon .facebook-post-editor{
+	display: none;
+	margin-top: 8px;
+	cursor: default;
+}
+.balloon .facebook-post-editor textarea{
+	margin: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	min-height: 5em;
+	resize: none;
+}
+.balloon .facebook-post-editor div{
+	text-align: right;
+	margin: 4px 0;
+}
+.balloon .facebook-post-editor button{
+	font: inherit;
+	background: #3B5998;
+	border: none;
+	margin: 0 0 0 4px;
+	color: white;
+	cursor: pointer;
+	padding: 3px 6px;
+}
+.balloon .facebook-post-editor button:first-child{
+	margin-left: 0;
+}
+#title-s{
+	position: fixed;
+	width: 120px;
+	height: 100px;
+	left: 12px;
+	top: 12px;
+	display: none;
+}
