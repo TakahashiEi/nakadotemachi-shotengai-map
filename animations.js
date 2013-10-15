@@ -22,7 +22,7 @@ $(document).ready(function(){
 		var is_self = (previous_balloon.parent().attr('id') == jquery_obj.attr('id'));
 		previous_balloon.fadeOut('fast', function(){previous_balloon.remove()});
 		
-		if(!is_self && jquery_obj.data('text_ja')){
+		if(!is_self && (jquery_obj.data('text_ja') || jquery_obj.data('url') || jquery_obj.data('twitter_id') || jquery_obj.data('facebook_id'))){
 			
 			var language = languages[current_language_index];
 			

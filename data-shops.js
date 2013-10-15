@@ -1,14 +1,14 @@
 var shops = {
 	
 	a01: {name_ja: 'TEA & CO.', left: 263.5, top: 658, width: 68.5, height: 120},
-	a02: {name_ja: 'あべフローリスト', left: 332, top: 677, width: 69, height: 101.5, text_ja: 'お花屋さん。花束・アレンジメント・鉢物・観葉植物など各種イベント・開店祝いなど生花お届けいたします。'},
+	a02: {name_ja: 'あべフローリスト', left: 332, top: 677, width: 69, height: 101.5, text_ja: 'お花屋さん。花束・アレンジメント・鉢物・観葉植物など各種イベント・開店祝いなど生花お届けいたします。', twitter_id: 'abeflorist'},
 	a03: {name_ja: 'ラ・ビアン土手町', left: 403, top: 680, width: 52.5, height: 98, text_ja: '婦人靴店。3E・4Eの靴も取り扱っております。ポイントカードもあります。'},
 	a04: {name_ja: '照明堂', left: 455.5, top: 683.5, width: 51.5, height: 93.5, text_ja: '電球・家電用専門店。電球の種類は東北でもトップクラス。レトロな家電なども見れることがあります。'},
 	a05: {name_ja: 'スタジオドゥ', left: 501, top: 645.5, width: 75, height: 79.5},
-	a06: {name_ja: 'ビノビジョン', left: 513.5, top: 716.5, width: 69, height: 60.5, text_ja: '眼鏡の専門店。フランス、アランミクリ、ベルギー　テオ、日本のフォーナインズなど取り扱い。視力検査、他店のメガネも無料で調整します。'},
+	a06: {name_ja: 'ビノビジョン', left: 513.5, top: 716.5, width: 69, height: 60.5, text_ja: '眼鏡の専門店。フランス、アランミクリ、ベルギー　テオ、日本のフォーナインズなど取り扱い。視力検査、他店のメガネも無料で調整します。', url: 'http://binovision.jp/'},
 	a07: {name_ja: '暮らしの衣料ストー', left: 577, top: 684.5, width: 66.5, height: 88.5, text_ja: 'エブリディーロープライス！良い品をどんどん安く売る店。婦人服・紳士用品・靴・雑貨いろいろあります。'},
 	a08: {name_ja: '利研刃物店', left: 652, top: 673, width: 56, height: 97},
-	a09: {name_ja: 'ホームワークス', left: 711, top: 700, width: 79, height: 72},
+	a09: {name_ja: 'ホームワークス', left: 711, top: 700, width: 79, height: 72, url: 'http://www.home-works.co.jp/', twitter_id: 'homeworks1st'},
 	a10: {name_ja: '', left: 714.5, top: 640.5, width: 59.5, height: 52},
 	a11: {name_ja: '新星美容室', left: 703, top: 582.5, width: 78.5, height: 54.5},
 	a12: {name_ja: '弘美堂', left: 708, top: 524, width: 74, height: 55.5},
@@ -40,7 +40,7 @@ var shops = {
 	b23: {name_ja: '入五閣', left: 890.5, top: 726, width: 46, height: 42},
 	b24: {name_ja: 'アカシヤ', left: 935, top: 724.5, width: 46, height: 44},
 
-	c01: {name_ja: 'ブレス（ブナコショールーム）', left: 1568.5, top: 530.5, width: 156, height: 80.5, text_ja: 'ブナ材を独自のエコ製法で加工した弘前生まれの「ブナコ」。デザイン性の高いインテリア・照明・テーブルウェアなど海外からも注目の商品です。'},
+	c01: {name_ja: 'ブレス（ブナコショールーム）', left: 1568.5, top: 530.5, width: 156, height: 80.5, text_ja: 'ブナ材を独自のエコ製法で加工した弘前生まれの「ブナコ」。デザイン性の高いインテリア・照明・テーブルウェアなど海外からも注目の商品です。', url: 'http://bunaco.jp/'},
 	c02: {name_ja: 'HANAKIYA', left: 1572.5, top: 607, width: 107, height: 60.5, text_ja: '婦人服、アクセサリー、バックの店。ハナエ・モリ　ヒロコ・コシノなど国内外のトップブランド婦人服をお取り扱いしております。'},
 	c03: {name_ja: '', left: 1580.5, top: 689.5, width: 58, height: 86},
 	c04: {name_ja: '平山萬年堂', left: 1645.5, top: 691.5, width: 60.5, height: 84.5, text_ja: '創業大正2年。万年筆、書道用具の専門店。オリジナルの津軽塗り万年筆や弘前市マスコットキャラクターたか丸くんグッズも販売。裏通りに姉妹店久三郎あります。'},
@@ -58,7 +58,7 @@ var shops = {
 	
 	d01: {name_ja: 'サイクルショップあべ', left: 2019, top: 508.5, width: 88, height: 82},
 	d02: {name_ja: 'つきや', left: 2041.5, top: 676.2, width: 69.5, height: 105, text_ja: '手芸用品専門店。津軽の伝統的デザイン刺繍「こぎん刺し」の材料、和、洋裁、毛糸、レザークラフト用品など取り扱いしています。'},
-	d03: {name_ja: '弘前パークホテル', left: 2112, top: 633, width: 105, height: 151.5, text_ja: '本格チャペルと3つのウェディングステージがゲストを温かくお迎えします。各種会合にもお使いいただけます。'},
+	d03: {name_ja: '弘前パークホテル', left: 2112, top: 633, width: 105, height: 151.5, text_ja: '本格チャペルと3つのウェディングステージがゲストを温かくお迎えします。各種会合にもお使いいただけます。', url: 'http://www.imgnjp.com/hiro_park/'},
 	d04: {name_ja: 'Resto Cafe Refuge', left: 2222, top: 682, width: 73, height: 85.5},
 	d05: {name_ja: 'めがねの天賞堂', left: 2224, top: 576, width: 66, height: 99},
 	d06: {name_ja: '津軽三味線ダイニング響', left: 2183, top: 98.5, width: 165.5, height: 63.5, text_ja: 'パークホテル3F津軽三味線を聴きながらお食事を楽しめます。郷土料理や青森の地酒をご堪能下さい。営業時間18時から/毎週月曜定休'},
@@ -75,7 +75,7 @@ var shops = {
 	e02: {name_ja: '青い花のスウィートポテト', left: 438, top: 1012, width: 63, height: 85.5, text_ja: '県産りんごの紅玉を使ったりんご入りスィートポテトや自家製カスタードを使用したナチュラルスィートポテトが大人気。ご試食もございます。'},
 	e03: {name_ja: 'VISION', left: 502.5, top: 1010, width: 66.5, height: 89, text_ja: 'ダンス衣装・パーティードレスの専門店。社交ダンスをはじめ結婚式・各種パーティー・接客など幅広いドレスをご用意。'},
 	e04: {name_ja: '朝日堂', left: 569, top: 1005.5, width: 70, height: 89},
-	e05: {name_ja: '弘前国際ホテル', left: 640, top: 1000, width: 109.5, height: 122, text_ja: '全客室　テンピュール社製の寝具を完備。朝食は津軽の郷土料理をバイキングスタイルでご用意しております。'},
+	e05: {name_ja: '弘前国際ホテル', left: 640, top: 1000, width: 109.5, height: 122, text_ja: '全客室　テンピュール社製の寝具を完備。朝食は津軽の郷土料理をバイキングスタイルでご用意しております。', url: 'http://www.hirosaki-kokusai.co.jp/', facebook_id: '238483146180555'},
 	e06: {name_ja: 'RENAISSE AVENUE', left: 753.5, top: 1010, width: 131.5, height: 110, text_ja: '最新のファッション・雑貨・宝飾などのお店が並ぶファッションビルです。ランチからディナーまでご利用できる飲食店や弘前で人気のスウィーツショップもあります。', url: 'http://renaisse.jp/', facebook_id: '351391531556192', twitter_id: 'renaisse'},
 	e07: {name_ja: '東奥信用金庫本店', left: 891, top: 1009, width: 87, height: 103.5, text_ja: '銀行。営業時間AM9時～PM15時。ATM平日8時～21時/土日祝8時～19時'},
 	e08: {name_ja: '', left: 982.5, top: 998.5, width: 56, height: 81},
@@ -106,7 +106,7 @@ var shops = {
 	e33: {name_ja: 'さくら惣菜店', left: 1112, top: 1342.5, width: 153, height: 37},
 	e34: {name_ja: '大高商店', left: 1112, top: 1380, width: 153, height: 37},
 	
-	f01: {name_ja: 'まちなか情報センター', left: 1375, top: 1028, width: 89, height: 115.5, text_ja: '各種情報・交流・休憩が出来るまちなか観光拠点。弘前のお土産・りんご・さくら・たか丸くんのグッズがあります。ソフトクリーム（4月～10月）が人気です。'},
+	f01: {name_ja: 'まちなか情報センター', left: 1375, top: 1028, width: 89, height: 115.5, text_ja: '各種情報・交流・休憩が出来るまちなか観光拠点。弘前のお土産・りんご・さくら・たか丸くんのグッズがあります。ソフトクリーム（4月～10月）が人気です。', url: 'http://www.ring-o.jp/'},
 	
 	g01: {name_ja: '弘前昇天教会', left: 1378, top: 1201.5, width: 125.5, height: 186, text_ja: '1920年（大正9年）に建設。西洋式の礼拝堂を和式の襖で仕切る興味深い建築スタイル。1882年頃製造されたリードオルガンは現役で使用されています。', bubble_vert_adjust: 17},
 	
