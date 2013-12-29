@@ -12,17 +12,40 @@ var fish_actions = [10, -10, 10, -10, 0, 0, 0, 0], fish_interval = 80, fish_easi
 var bubble_interval = 1500;
 var blow_up_interval = 200, blow_up_easing = 'easeOutCubic';
 
+function change_language(language_index){
+	if(language_index != current_language){
+		var next_language = languages[language_index], current_language = languages[current_language_index];
+		if(can_touch){
+			$('.' + current_language + ':not(.fixed)').hide();
+			$('.' + next_language).show();
+			current_language_index = language_index;
+			$('.balloon').remove();
+		}else{
+			$('.' + current_language + ':not(.fixed)').fadeOut(400, function(){
+				$('.' + next_language).fadeIn(400);
+				current_language_index = language_index;
+			})
+			$('.balloon').fadeOut('fast', function(){$('.balloon').remove()});
+		}
+	}
+}
+
 $(document).ready(function(){
 	
 	function blow_up_balloon(jquery_obj){
 		
 		if(facebook_post_editting) return;
 		
-		var previous_balloon = $('.balloon').first();
-		var is_self = (previous_balloon.parent().attr('id') == jquery_obj.attr('id'));
-		previous_balloon.fadeOut('fast', function(){previous_balloon.remove()});
+		var previous_balloon = $('.balloon');
+		if((previous_balloon.parent().attr('id') == jquery_obj.attr('id'))) return;
+		//var is_self = (previous_balloon.parent().attr('id') == jquery_obj.attr('id'));
+		if(can_touch){
+			previous_balloon.remove()
+		}else{
+			previous_balloon.fadeOut('fast', function(){previous_balloon.remove()});
+		}
 		
-		if(!is_self && (jquery_obj.data('text_ja') || jquery_obj.data('url') || jquery_obj.data('twitter_id') || jquery_obj.data('facebook_id'))){
+		if((jquery_obj.data('text_ja') || jquery_obj.data('url') || jquery_obj.data('twitter_id') || jquery_obj.data('facebook_id'))){
 			
 			var language = languages[current_language_index];
 			
@@ -62,13 +85,23 @@ $(document).ready(function(){
 					$('<h1></h1>').text(jquery_obj.data('name_' + language))
 				).append(
 					$('<img />').attr({
-						src: 'images/close-balloon.png',
+						src: 'images/cross-grey.png',
 						alt: 'close'
 					}).addClass('close-balloon').click(function(){
-						next_balloon.fadeOut('fast', function(){next_balloon.remove()});
+						if(can_touch){
+							next_balloon.remove()
+						}else{
+							next_balloon.fadeOut('fast', function(){next_balloon.remove()});
+						}
 					})
 				).addClass('body')
-			).addClass('balloon ' + point_to + ' ' + vert).appendTo(jquery_obj).fadeIn('normal');
+			).addClass('balloon ' + point_to + ' ' + vert).appendTo(jquery_obj).each(function(){
+				if(can_touch){
+					$(this).show()
+				}else{
+					$(this).fadeIn('normal');
+				}
+			})
 			if(jquery_obj.data('text_ja')){
 				$('.body', next_balloon).append(
 					$('<article></article>').text(jquery_obj.data('text_' + language))
@@ -140,8 +173,8 @@ $(document).ready(function(){
 	}
 	
 	$('.illust-group').each(function(){
-		$(this).bind('mouseenter', function(){
-			blow_up_balloon($(this));
+		$(this).bind('mouseenter touchstart', function(){
+			if(!current_language_index) blow_up_balloon($(this));
 		})
 	})
 	
@@ -154,7 +187,7 @@ $(document).ready(function(){
 	$('.jolt').each(function(){
 		var timer;
 		var item = $('.item', this);
-		$(this).bind('mouseenter', function(){
+		$(this).bind('mouseenter touchstart', function(){
 			jolt(item);
 			timer = setInterval(function(){
 				jolt(item);
@@ -171,7 +204,7 @@ $(document).ready(function(){
 	$('.rotate').each(function(){
 		var timer;
 		var item = $('.item', this);
-		$(this).bind('mouseenter', function(){
+		$(this).bind('mouseenter touchstart', function(){
 			rotate(item);
 			timer = setInterval(function(){
 				rotate(item);
@@ -194,7 +227,7 @@ $(document).ready(function(){
 	$('.bowwow').each(function(){
 		var timer;
 		var item = $('.item', this);
-		$(this).bind('mouseenter', function(){
+		$(this).bind('mouseenter touchstart', function(){
 			bowwow(item);
 			timer = setInterval(function(){
 				bowwow(item);
@@ -214,7 +247,7 @@ $(document).ready(function(){
 	$('.fish').each(function(){
 		var timer;
 		var bg = $('.bg', this);
-		$(this).bind('mouseenter', function(){
+		$(this).bind('mouseenter touchstart', function(){
 			fish(bg);
 			timer = setInterval(function(){
 				fish(bg);
@@ -236,8 +269,8 @@ $(document).ready(function(){
 	})
 	
 	$('.shop').each(function(){
-		$(this).bind('mouseenter', function(ev){
-			$('.shop.current .name').animate({
+		$(this).bind('mouseenter touchstart', function(ev){
+			if(!current_language_index && !can_touch) $('.shop.current .name').animate({
 				width: '100%',
 				height: '100%',
 				left: 0,
@@ -246,7 +279,7 @@ $(document).ready(function(){
 				zIndex: 0
 			});
 			$('.shop.current').removeClass('current');
-			$('.name', this).animate({
+			if(!current_language_index && !can_touch) $('.name', this).animate({
 				width: '120%',
 				height: '120%',
 				left: '-10%',
@@ -257,7 +290,7 @@ $(document).ready(function(){
 			$(this).addClass('current');
 			blow_up_balloon($(this));
 		}).bind('mouseleave touchend', function(){
-			$('.name', this).animate({
+			if(!current_language_index && !can_touch) $('.name', this).animate({
 				width: '100%',
 				height: '100%',
 				left: 0,
@@ -268,7 +301,7 @@ $(document).ready(function(){
 		})
 	})
 	
-	$('#compass').bind('mouseenter', function(){
+	$('#compass').bind('mouseenter touchstart', function(){
 		if(!$(this).data('is-rotating')){
 			$(this).data('is-rotating', true).animate({
 				rotate: 720
@@ -276,6 +309,23 @@ $(document).ready(function(){
 				$(this).data('is-rotating', false).rotate(0);
 			})
 		}
+	})
+	
+	function close_panel(panel_dom){
+		panel_dom.animate({bottom: -96}, can_touch? 'fast': 1200, can_touch? 'swing': 'easeOutElastic').data({status: 'close'})
+	}
+	
+	$('#select-language-button').click(function(){
+		var panel = $('#select-language-panel');
+		if(panel.data('status') == 'open'){
+			close_panel(panel)
+		}else{
+			$('#select-language-panel').animate({bottom: -36}, can_touch? 'fast': 1200, can_touch? 'swing': 'easeOutElastic').data({status: 'open'})
+		}
+	})
+	
+	$('#select-language-panel .close-button').click(function(){
+		close_panel($('#select-language-panel'))
 	})
 	
 })

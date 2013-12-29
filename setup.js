@@ -1,7 +1,8 @@
-var languages = ['ja'], current_language_index = 0;
+var languages = ['ja', 'en', 'zh', 'ko'], current_language_index = 0;
 var map_pieces_x_count = 10, map_pieces_y_count = 7;
 var map_piece_width = 256, map_piece_height = 256;
 var map_piece_right_end_width = 171, map_piece_bottom_end_height = 216;
+var can_touch = false;
 
 function load_map(){
 	if(is_http){
@@ -101,13 +102,19 @@ function load_texts(){
 			width: data.width,
 			height: data.height
 		}).addClass('text').appendTo($('#container'))
-		for(var i = 0; i < languages.length; i++){
-			var language = languages[i];
-			$('<img />').attr({
-				src: 'images/texts/' + language + '/' + text_name + '.png',
-				alt: ''
-			}).addClass('by-language ' + language).appendTo(dom)
-		}
+		$('<img />').attr({
+			src: 'images/texts/ja/' + text_name + '.png',
+			alt: ''
+		}).addClass('by-language ja fixed').appendTo(dom)
+		// for(var i = 0; i < languages.length; i++){
+			// var language = languages[i];
+			// if(language == 'ja'){
+				// $('<img />').attr({
+					// src: 'images/texts/' + language + '/' + text_name + '.png',
+					// alt: ''
+				// }).addClass('by-language ' + language).appendTo(dom)
+			// }
+		// }
 	}
 }
 
@@ -121,12 +128,7 @@ function load_shops(){
 			top: data.top,
 			width: data.width,
 			height: data.height
-		}).append(
-			$('<img />').attr({
-				src: 'images/shops/' + shop_id + '.png',
-				alt: ''
-			}).addClass('bg')
-		).addClass('shop').appendTo($('#container'))
+		}).addClass('shop').appendTo($('#container'))
 		if(data.bubble_vert_adjust) dom.data('bubble_vert_adjust', data.bubble_vert_adjust);
 		if(data.facebook_id) dom.data('facebook_id', data.facebook_id);
 		if(data.twitter_id) dom.data('twitter_id', data.twitter_id);
@@ -134,12 +136,23 @@ function load_shops(){
 		if(data.name_ja){
 			for(var i = 0; i < languages.length; i++){
 				var language = languages[i];
-				dom.append(
-					$('<img />').attr({
-						src: 'images/shops/' + language + '/' + shop_id + '.png',
-						alt: ''
-					}).addClass('name by-language ' + language)
-				).data('name_' + language, data['name_' + language]).data('text_' + language, data['text_' + language])
+				if(language == 'ja'){
+					var fixed_class = data['name_en']? '': 'fixed ';
+					dom.append(
+						$('<img />').attr({
+							src: 'images/shops/' + language + '/' + shop_id + '.png',
+							alt: ''
+						}).addClass(fixed_class + 'image name by-language ' + language)
+					).data('name_' + language, data['name_' + language]).data('text_' + language, data['text_' + language])
+				}else{
+					dom.append(
+						$('<div></div>').addClass('text name by-language ' + language).append(
+							$('<div></div>').addClass('outer').append(
+								$('<div></div>').text(data['name_' + language]).addClass('inner')
+							)
+						)
+					).data('name_' + language, data['name_' + language]).data('text_' + language, data['text_' + language])
+				}
 			};
 		}
 	}
@@ -148,7 +161,8 @@ function load_shops(){
 $(document).ready(function(){
 	
 	if('ontouchstart' in document.documentElement){
-		$('body').addClass('can-touch')
+		$('body').addClass('can-touch');
+		can_touch = true;
 	}
 	
 	$('#container').width(
@@ -156,7 +170,7 @@ $(document).ready(function(){
 	).height(
 		map_piece_height * (map_pieces_y_count - 1) + map_piece_bottom_end_height
 	);
-	load_map();
+	//load_map();
 	load_illust_groups();
 	load_illusts();
 	load_texts();
