@@ -165,6 +165,8 @@ $(document).ready(function(){
 		can_touch = true;
 	}
 	
+	if(is_phonegap) $('#home-button').hide();
+	
 	$('#container').width(
 		map_piece_width * (map_pieces_x_count - 1) + map_piece_right_end_width
 	).height(

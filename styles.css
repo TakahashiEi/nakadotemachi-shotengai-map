@@ -257,6 +257,23 @@ body.can-touch{
 	top: 12px;
 	display: none;
 }
+.nav-button{
+	position: fixed;
+	bottom: 12px;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	z-index: 110;
+	display: block;
+}
+.nav-button img{
+	display: block;
+	width: 36px;
+	height: 36px;
+}
+#home-button{
+	right: 60px;
+}
 #select-language-panel{
 	position: fixed;
 	background: #FDDC8A;
@@ -285,11 +302,5 @@ body.can-touch{
 	color: #721500;
 }
 #select-language-button{
-	position: fixed;
 	right: 12px;
-	bottom: 12px;
-	width: 36px;
-	height: 36px;
-	cursor: pointer;
-	z-index: 110;
 }
